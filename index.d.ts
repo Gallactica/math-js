@@ -1,36 +1,42 @@
 interface Math {
-    /** Radians-to-degreess */
-    readonly RAD2DEG: number;
-    /** Degrees-to-radians */
-    readonly DEG2RAD: number;
-    clamp(value: number, min: number, max: number): number;
-    clamp01(value: number): number;
-    truncate(value: number, digits: number): number;
-    repeat(value: number, length: number): number;
+    clamp(x: number, min: number, max: number): number;
+    clamp01(x: number): number;
+    truncated(x: number, digits: number): number;
+    cycle(x: number, length: number): number;
     randomInt(min: number, max: number): number;
     randomFloat(min: number, max: number): number;
     average(array: number[]): number;
     sum(array: number[]): number;
+    multiply(x: number, array: number[]): number[];
+    operations(fns: Function[], array: number[]): number[];
+    operation(fns: Function[], x: number): number;
     lerp(start: number, end: number, amount: number): number;
-    alpha(value: number, min: number, max: number): number;
+    normalize(x: number, min: number, max: number): number;
+    normalize01(x: number, min: number, max: number): number;
     factorial(n: number): number;
     fib(n: number): number;
-    /** Greatest Common Divisor */
-    gcd(a: number, b: number): number;
-    /** Lowest Common Divisor */
-    lcd(a: number, b: number): number;
-    /** Converts from degrees to radians */
-    radians(degress: number): number;
-    /** Converts from radians to degrees */
-    degrees(radians: number): number;
-    sqr(value: number): number;
-    isInt(value: number): boolean;
-    isFloat(value: number): boolean;
-    isEven(value: number): boolean;
-    isOdd(value: number): boolean;
-    isNumber(value: number): boolean;
-    isNegative(value: number): boolean;
-    isPositive(value: number): boolean;
-    isZero(value: number): boolean;
-    isNonZero(value: number): boolean;
+    gcd(x: number, y: number): number;
+    lcd(x: number, y: number): number;
+    toRadians(degress: number): number;
+    toDegrees(radians: number): number;
+    sqr(x: number): number;
+    isInt(x: number): boolean;
+    isFloat(x: number): boolean;
+    isEven(x: number): boolean;
+    isOdd(x: number): boolean;
+    isNumber(x: number): boolean;
+    isNegative(x: number): boolean;
+    isPositive(x: number): boolean;
+    isZero(x: number): boolean;
+    isNonZero(x: number): boolean;
+    randomBoolean(): boolean;
+    ctg(x: number): number;
+    actg(x: number): number;
+    round5(x: number): number;
+    roundN(x: number, y: number): number;
+    roundGauss(x: number, decimal: number): number;
+    copysign(x: number, y: number): number;
+    unique(array: number[]): number[];
+    difference(x: number, y: number): number;
+    repeat(x: number, y: number): number;
 }
