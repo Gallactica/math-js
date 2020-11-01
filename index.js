@@ -1,6 +1,6 @@
 const
-    R2D = 180 / Math.PI,
-    D2R = Math.PI / 180
+    RAD2DEG = 180 / Math.PI,
+    DEG2RAD = Math.PI / 180
 Math.truncated = (n, digits) => {
     if (null == digits) return Math.trunc(n)
     let pow = Math.pow(10, digits)
@@ -13,6 +13,16 @@ Math.isInt = n => Number(n) === n && n % 1 === 0
 Math.isFloat = n => Number(n) === n && n % 1 !== 0
 Math.clamp = (n, min, max) => Math.max(min, Math.min(n, max))
 Math.clamp01 = (n) => Math.clamp(n, 0, 1)
+Math.inRange = (value, min, max = 0) => (min < value && value < max) || (max < value && value < min)
+Math.multiply = (a, b) => a * b
+Math.divide = (a, b) => a / b
+Math.lt = (a, b) => a < b
+Math.lte = (a, b) => a <= b
+Math.gt = (a, b) => a > b
+Math.gte = (a, b) => a >= b
+Math.add = (a, b) => a + b
+Math.subtract = (a, b) => a - b
+Math.getBaseLog = (x, y) => Math.log(y) / Math.log(x)
 Math.cycle = (n, length) => n > 0 ? n % length : length + n % length
 Math.distance = (x1, y1, x2, y2) => Math.sqr(x1 - x2) + Math.sqr(y1 - y2)
 Math.randomInt = (min, max) => Math.floor(min + Math.random() * (max + 1 - min))
@@ -23,8 +33,19 @@ Math.factorial = n => (n != 1) ? n * Math.factorial(n - 1) : 1
 Math.fib = n => n <= 1 ? n : Math.fib(n - 1) + Math.fib(n - 2)
 Math.gcd = (x, y) => (y == 0) ? (x) : (Math.gcd(y, x % y))
 Math.lcd = (x, y) => (x / Math.gcd(x, y)) * y
-Math.toRadians = n => n * D2R
-Math.toDegrees = n => n * R2D
+Math.lcm = (x, y) => x * (y / Math.gcd(x, y))
+Math.hcf = (x, y) => {
+    x = Math.abs(x);
+    y = Math.abs(y);
+    while (y) {
+        let t = y;
+        y = x % y;
+        x = t;
+    }
+    return x;
+}
+Math.toRadians = n => n * DEG2RAD
+Math.toDegrees = n => n * RAD2DEG
 Math.sqr = n => n * n
 Math.isEven = n => n % 2 === 0
 Math.isOdd = n => n % 2 !== 0
@@ -56,3 +77,14 @@ Math.operation = (x, y) => x.reduce((p, fn) => fn(p), y)
 Math.unique = (x) => [...new Set(x)]
 Math.difference = (x, y) => x > y ? -(x - y) : y - x
 Math.repeat = (x, y) => Math.abs(x / y > 0 ? Math.floor(x / y) : Math.ceil(x / y))
+Math.cube = (x) => x * x * x
+Math.square = (x) => x * x
+Math.not = (x) => !x
+// Bitwise functions
+Math.bitAnd = (x, y) => x & y
+Math.bitNot = (x) => ~x
+Math.bitOr = (x, y) => x | y
+Math.bitXor = (x, y) => x ^ y
+Math.leftShift = (x, y) => x << y
+Math.rightArithShift = (x, y) => x >> y
+Math.rightLogShift = (x, y) => x >>> y
